@@ -1637,6 +1637,59 @@ const babData = {
   { kanji: "年齢", kana: "ねんれい", answers: ["usia, umur", "sifat", "cara", "kebiasaan"], correct: "usia, umur" },
   { kanji: "", kana: "しかた", answers: ["cara", "sifat", "usia", "point"], correct: "cara" }
 ],
+39: [
+  { kanji: "答えます", kana: "こたえます", answers: ["menjawab [pertanyaan]", "roboh", "lewat", "mati"], correct: "menjawab [pertanyaan]" },
+  { kanji: "倒れます", kana: "たおれます", answers: ["[bangunan] roboh", "menjawab", "lewat", "kaget"], correct: "[bangunan] roboh" },
+  { kanji: "通ります", kana: "とおります", answers: ["lewat, melalui [jalan]", "roboh", "meninggal", "putus asa"], correct: "lewat, melalui [jalan]" },
+  { kanji: "死にます", kana: "しにます", answers: ["meninggal dunia", "menjawab", "lewat", "lega"], correct: "meninggal dunia" },
+  { kanji: "", kana: "びっくりします", answers: ["kaget", "putus asa", "lega", "bertengkar"], correct: "kaget" },
+  { kanji: "", kana: "がっかりします", answers: ["putus asa", "kaget", "lega", "bercerai"], correct: "putus asa" },
+  { kanji: "安心します", kana: "あんしんします", answers: ["lega", "kaget", "putus asa", "bertengkar"], correct: "lega" },
+  { kanji: "", kana: "けんかします", answers: ["bertengkar", "bercerai", "menjadi gemuk", "menjadi kurus"], correct: "bertengkar" },
+  { kanji: "離婚します", kana: "りこんします", answers: ["bercerai", "bertengkar", "menjadi gemuk", "menjadi kurus"], correct: "bercerai" },
+  { kanji: "太ります", kana: "ふとります", answers: ["menjadi gemuk", "menjadi kurus", "rumit", "gangguan"], correct: "menjadi gemuk" },
+  { kanji: "", kana: "やせます", answers: ["menjadi kurus", "menjadi gemuk", "rumit", "gangguan"], correct: "menjadi kurus" },
+  { kanji: "複雑[な]", kana: "ふくざつ[な]", answers: ["rumit", "gangguan", "keras", "lembut"], correct: "rumit" },
+  { kanji: "邪魔[な]", kana: "じゃま[な]", answers: ["gangguan", "rumit", "keras", "lembut"], correct: "gangguan" },
+  { kanji: "硬い", kana: "かtai", answers: ["keras", "lembut", "kotor", "senang"], correct: "keras" },
+  { kanji: "軟らかい", kana: "やわらかい", answers: ["lembut", "keras", "kotor", "senang"], correct: "lembut" },
+  { kanji: "汚い", kana: "きたない", answers: ["kotor", "keras", "lembut", "sedih"], correct: "kotor" },
+  { kanji: "", kana: "うれしい", answers: ["senang", "sedih", "malu", "kotor"], correct: "senang" },
+  { kanji: "悲しい", kana: "かなしい", answers: ["sedih", "senang", "malu", "kotor"], correct: "sedih" },
+  { kanji: "恥ずかしい", kana: "はずかしい", answers: ["malu", "sedih", "senang", "kotor"], correct: "malu" },
+  { kanji: "首相", kana: "しゅしょう", answers: ["perdana menteri", "gempa bumi", "tsunami", "angin topan"], correct: "perdana menteri" },
+  { kanji: "地震", kana: "じしん", answers: ["gempa bumi", "tsunami", "angin topan", "petir"], correct: "gempa bumi" },
+  { kanji: "津波", kana: "つなみ", answers: ["tsunami", "gempa bumi", "angin topan", "petir"], correct: "tsunami" },
+  { kanji: "台風", kana: "たいふう", answers: ["angin topan", "petir", "kebakaran", "kecelakaan"], correct: "angin topan" },
+  { kanji: "雷", kana: "かみなり", answers: ["petir", "angin topan", "kebakaran", "kecelakaan"], correct: "petir" },
+  { kanji: "火事", kana: "かじ", answers: ["kebakaran", "petir", "angin topan", "kecelakaan"], correct: "kebakaran" },
+  { kanji: "事故", kana: "じこ", answers: ["kecelakaan", "kebakaran", "petir", "angin topan"], correct: "kecelakaan" },
+  { kanji: "", kana: "ハイキング", answers: ["hiking", "perjodohan", "tempat", "handuk"], correct: "hiking" },
+  { kanji: "[お]見合い", kana: "[お]みあい", answers: ["perjodohan", "hiking", "tempat", "handuk"], correct: "perjodohan" },
+  { kanji: "操作", kana: "そうさ", answers: ["operasi (mengoperasi)", "tempat", "biaya untuk ~", "penjual ~"], correct: "operasi (mengoperasi)" },
+  { kanji: "会場", kana: "かいじょう", answers: ["tempat", "operasi", "biaya untuk ~", "penjual ~"], correct: "tempat" },
+  { kanji: "～代", kana: "～だい", answers: ["biaya untuk ~", "penjual ~", "tempat", "kamar nomor -"], correct: "biaya untuk ~" },
+  { kanji: "～屋", kana: "～や", answers: ["penjual ~", "biaya untuk ~", "tempat", "kamar nomor -"], correct: "penjual ~" },
+  { kanji: "", kana: "フロント", answers: ["resepsionis", "handuk", "sabun", "banyak"], correct: "resepsionis" },
+  { kanji: "―号室", kana: "―ごうしつ", answers: ["kamar nomor -", "biaya untuk ~", "penjual ~", "tempat"], correct: "kamar nomor -" },
+  { kanji: "", kana: "タオル", answers: ["handuk", "sabun", "banyak", "truk"], correct: "handuk" },
+  { kanji: "", kana: "せっけん", answers: ["sabun", "handuk", "banyak", "truk"], correct: "sabun" },
+  { kanji: "大勢", kana: "おおぜい", answers: ["banyak", "sedikit", "tetapi", "dan"], correct: "banyak" },
+  { kanji: "お疲れ様でした。", kana: "おつかれさまでした。", answers: ["Terima kasih atas kerja samanya.", "Mari selesai.", "Permisi duluan.", "Bagus, ya."], correct: "Terima kasih atas kerja samanya." },
+  { kanji: "伺います。", kana: "うかがいます。", answers: ["pergi (Kata Merendahkan Diri)", "menjawab", "lewat", "lega"], correct: "pergi (Kata Merendahkan Diri)" },
+  { kanji: "途中で", kana: "とちゅうで", answers: ["di tengah", "sekarang", "tetapi", "dan"], correct: "di tengah" },
+  { kanji: "", kana: "トラック", answers: ["truk", "handuk", "sabun", "banyak"], correct: "truk" },
+  { kanji: "ぶつかります", kana: "ぶつかります", answers: ["menabrak", "menjawab", "lewat", "roboh"], correct: "menabrak" },
+  { kanji: "大人", kana: "おとな", answers: ["orang dewasa", "anak-anak", "bayi", "guru"], correct: "orang dewasa" },
+  { kanji: "", kana: "しかし", answers: ["tetapi", "dan", "sekarang", "cocok"], correct: "tetapi" },
+  { kanji: "また", kana: "また", answers: ["dan", "tetapi", "sekarang", "cocok"], correct: "dan" },
+  { kanji: "洋服", kana: "ようふく", answers: ["baju", "handuk", "sabun", "cincin"], correct: "baju" },
+  { kanji: "西洋化します", kana: "せいようかします", answers: ["kebarat-baratan", "menciptakan", "menemukan", "merawat"], correct: "kebarat-baratan" },
+  { kanji: "合います", kana: "あいます", answers: ["cocok", "menabrak", "meninggal", "lega"], correct: "cocok" },
+  { kanji: "今では", kana: "いまでわ", answers: ["sekarang", "dulu", "nanti", "besok"], correct: "sekarang" },
+  { kanji: "成人式", kana: "せいじんしき", answers: ["upacara pendewasaan", "perjodohan", "resepsionis", "kebakaran"], correct: "upacara pendewasaan" },
+  { kanji: "伝統的[な]", kana: "でんとうてき[な]", answers: ["secara tradisional", "khusus", "rumit", "aneh"], correct: "secara tradisional" }
+],
 40:[
   { kanji: "数えます", kana: "かぞえます", answers: ["menghitung", "mengukur", "mengecek", "cocok"], correct: "menghitung" },
   { kanji: "測ります、量ります", kana: "はかります", answers: ["mengukur, menimbang", "menghitung", "mengecek", "berangkat"], correct: "mengukur, menimbang" },
@@ -1808,6 +1861,7 @@ const babData = {
   { kanji: "注ぎます", kana: "そそぎます", answers: ["menyiram", "membagi", "mencampur", "memasak"], correct: "menyiram" }
 ]
 };
+
 
 
 
