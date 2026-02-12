@@ -33,7 +33,6 @@
   .optBtn.correct { background: #4caf50 !important; }
   .optBtn.wrong { background: #f44336 !important; }
 
-  /* Style Baru untuk Mode Ketik */
   #inputContainer { display: none; width: 100%; flex-direction: column; gap: 12px; margin-top: 20px; margin-bottom: 40px;}
   #userAnswer { width: 100%; padding: 18px; border-radius: 15px; border: 2px solid #333; background: #252525; color: white; font-size: 18px; text-align: center; box-sizing: border-box; }
   #userAnswer:focus { border-color: #ff5722; outline: none; }
@@ -262,32 +261,35 @@
     document.getElementById('flowerCount').innerText = combo;
   }
 
-  // --- PERBAIKAN UTAMA PADA PENGECEKAN KETIKAN ---
+  // FUNGSI PEMBERSIH TANDA KHUSUS (~, －, spasi berlebih)
+  function cleanString(str) {
+      if (!str) return "";
+      // Menghapus tanda gelombang (~), strip panjang (－), dan spasi di awal/akhir
+      // Kemudian mengubah ke huruf kecil
+      return str.replace(/[~～－\-]/g, "").trim().toLowerCase();
+  }
+
   function checkInputAnswer() {
       const q = currentQuestions[currentIndex];
-      // Ambil input user, hilangkan spasi depan-belakang, ubah jadi kecil
-      const userVal = document.getElementById('userAnswer').value.trim().toLowerCase();
       const inputField = document.getElementById('userAnswer');
       const msg = document.getElementById('wrongMessage');
+      
+      // Bersihkan input user
+      const userVal = cleanString(inputField.value);
       
       let isCorrect = false;
 
       if (quizMode === 'jp-id') {
-          // Ambil jawaban benar dari database, bersihkan spasi paling ujung secara keseluruhan
-          let dbAnswer = q.correct.trim().toLowerCase();
-          
-          // Pecah jawaban berdasarkan koma (antisipasi jika jawaban ada dua kata/lebih)
-          // Contoh: "melihat, memeriksa " -> ["melihat", "memeriksa"]
-          let correctOptions = dbAnswer.split(',').map(item => item.trim());
+          // Ambil jawaban benar, pecah jika ada koma
+          let correctStr = q.correct.toLowerCase();
+          let correctOptions = correctStr.split(',').map(opt => cleanString(opt));
 
-          // Cek apakah input user cocok dengan salah satu kata atau kalimat lengkap
-          isCorrect = correctOptions.includes(userVal) || userVal === dbAnswer;
-
+          // Cek apakah input user (yang sudah bersih) cocok dengan opsi mana pun (yang sudah bersih)
+          isCorrect = correctOptions.includes(userVal) || userVal === cleanString(correctStr);
       } else {
           // Mode ID-JP (Ketik Jepang)
-          // Bersihkan database kanji & kana dari spasi yang mungkin tak sengaja terinput di data_minna.js
-          let dbKanji = q.kanji ? q.kanji.trim() : "";
-          let dbKana = q.kana ? q.kana.trim() : "";
+          let dbKanji = cleanString(q.kanji);
+          let dbKana = cleanString(q.kana);
           
           isCorrect = (userVal === dbKanji) || (userVal === dbKana);
       }
@@ -309,7 +311,6 @@
           }, 2500); 
       }
   }
-  // --- END PERBAIKAN ---
 
   function processAnswer(isCorrect, element = null) {
       if(isCorrect) {
