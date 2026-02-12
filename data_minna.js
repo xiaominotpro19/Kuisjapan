@@ -1059,10 +1059,10 @@ const babData = {
   ],
     27: [
     { kanji: "飼います", kana: "かいます", answers: ["memelihara", "membeli", "berlari", "melihat"], correct: "memelihara" },
-    { kanji: "走ります", kana: "はしります ", answers: ["berlari", "berjalan", "membuat", "terlihat"], correct: "berlari" },
+    { kanji: "走ります", kana: "はしります", answers: ["berlari", "berjalan", "membuat", "terlihat"], correct: "berlari" },
     { kanji: "見えます", kana: "みえます", answers: ["terlihat", "terdengar", "melihat", "menonton"], correct: "terlihat" },
-    { kanji: "聞こえます", kana: "きこえます ", answers: ["terdengar", "mendengar", "terlihat", "berkata"], correct: "terdengar" },
-    { kanji: "できます", kana: "できます ", answers: ["dibuat", "bisa", "datang", "selesai"], correct: "dibuat" },
+    { kanji: "聞こえます", kana: "きこえます", answers: ["terdengar", "mendengar", "terlihat", "berkata"], correct: "terdengar" },
+    { kanji: "できます", kana: "できます", answers: ["dibuat", "bisa", "datang", "selesai"], correct: "dibuat" },
     { kanji: "開きます", kana: "ひらきます", answers: ["membuka", "menutup", "masuk", "istirahat"], correct: "membuka" },
     { kanji: "心配[な]", kana: "しんぱい", answers: ["khawatir", "senang", "aman", "bahaya"], correct: "khawatir" },
     { kanji: "", kana: "ペット", answers: ["hewan peliharaan", "Hewan", "kucing", "pintu"], correct: "hewan peliharaan" },
@@ -2128,6 +2128,7 @@ const babData = {
   { kanji: "ミュンヘン", kana: "ミュンヘン", answers: ["München (Jerman)", "Paris (Prancis)", "London (Inggris)", "Roma (Italia)"], correct: "München (Jerman)" }
 ]
 };
+
 
 
 
