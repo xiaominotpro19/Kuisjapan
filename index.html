@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Kuis Jepang Rama</title>
+<title>KUIS BAHASA JEPANG RAMA</title>
 <style>
   html, body { margin: 0; padding: 0; background-color: #121212; color: #eee; font-family: sans-serif; }
   body { display: flex; justify-content: center; min-height: 100vh; overflow-x: hidden; }
@@ -25,7 +25,7 @@
   .babBtn { background: #1e1e1e; border-radius: 12px; padding: 10px; color: #eee; border: 1px solid #333; cursor: pointer; min-width: 85px; font-size: 13px; }
 
   #wordBox { display: none; flex-direction: column; align-items: center; justify-content: center; flex-grow: 1; text-align: center; }
-  #kanji { font-size: 20px; color: #888; margin-bottom: 5px; }
+  #kanji { font-size: 20px; color: #888; margin-bottom: 5px; min-height: 24px; }
   #kana { font-size: 34px; color: #ff5722; font-weight: bold; padding: 0 10px; }
   
   #options { display: none; flex-direction: column; gap: 12px; width: 100%; margin-bottom: 40px; margin-top: 20px; }
@@ -40,18 +40,18 @@
 <body>
 
 <div id="app">
-  <button id="backBtn" onclick="goBack()">⏪</button>
+  <button id="backBtn" onclick="goBack()">←</button>
 
-    <div id="mainMenu" class="menu-container">
-    <h2 style="color: #ff5722;">夢の道クラス</h2>
+  <div id="mainMenu" class="menu-container">
+    <h2 style="color: #ff5722;">日本語クイズ</h2>
     <button class="mainBtn" onclick="showMinnaMenu()">MINNA NO NIHONGO</button>
     <button class="mainBtn iroBtn" onclick="showIrodoriMenu()">IRODORI</button>
 
-    <div class="footer-copyright" style="margin-top: 40px; padding: 20px 0; text-align: center; border-top: 1px solid #222; width: 100%;">
+    <div style="margin-top: 40px; padding: 20px 0; text-align: center; border-top: 1px solid #222; width: 100%;">
         <p style="font-size: 12px; color: #555; line-height: 1.6; margin: 0;">
             Copyright © 2026<br>
             Pengembang Cahya Ramadhan <br>
-            日本語クイズ
+            夢の道クラス
         </p>
     </div>
   </div>
@@ -72,6 +72,13 @@
     <div id="headerGrid"></div>
   </div>
 
+  <div id="modeMenu" class="menu-container">
+    <h2 style="color: #ffb74d;">Pilih Mode Kuis</h2>
+    <p id="modeInfo" style="margin-top:-10px; color:#888;"></p>
+    <button class="mainBtn" onclick="setQuizMode('jp-id')">JEPANG ➔ INDO</button>
+    <button class="mainBtn iroBtn" onclick="setQuizMode('id-jp')">INDO ➔ JEPANG</button>
+  </div>
+
   <div id="wordBox">
     <div id="quizHeader">
         <div id="quizInfo"></div>
@@ -87,7 +94,7 @@
     <div class="score-circle" id="finalScore">0%</div>
     <div id="finalDetail" style="margin-bottom:20px; color:#aaa; white-space: pre-line;"></div>
     <button id="nextChunkBtn" class="mainBtn" style="margin-bottom:10px; display:none;">LANJUT KUIS</button>
-    <button class="mainBtn" style="background:#555;" onclick="goBack()">KEMBALI KE MENU</button>
+    <button class="mainBtn" style="background:#555;" onclick="goBack()">KEMBALI</button>
   </div>
 </div>
 
@@ -102,11 +109,12 @@
   let correctCount = 0;
   let combo = 0;
   let activeView = 'main';
-  let prevView = '';
   let currentLabel = '';
+  let selectedData = null;
+  let quizMode = 'jp-id';
 
   function hideAll() {
-    ['mainMenu','minnaMenu','irodoriMenu','dynamicMenu','wordBox','options','comboSection','resultPage']
+    ['mainMenu','minnaMenu','irodoriMenu','dynamicMenu','modeMenu','wordBox','options','comboSection','resultPage']
     .forEach(id => { document.getElementById(id).style.display = 'none'; });
   }
 
@@ -114,7 +122,6 @@
   function showMinnaMenu() { hideAll(); document.getElementById('minnaMenu').style.display = 'flex'; document.getElementById('backBtn').style.display = 'block'; activeView = 'minna'; }
   function showIrodoriMenu() { hideAll(); document.getElementById('irodoriMenu').style.display = 'flex'; document.getElementById('backBtn').style.display = 'block'; activeView = 'irodori'; }
 
-  // Fungsi Universal untuk menampilkan daftar Bab 1-50
   function showGridMenu(title, type, start, end) {
     hideAll();
     const menu = document.getElementById('dynamicMenu');
@@ -130,23 +137,28 @@
         b.className = 'babBtn';
         b.innerText = 'Bab ' + i;
         b.onclick = () => {
-            if(type === 'ref') startQuiz('Ref Bab '+i, referensiData[i]);
-            else startQuiz('Bab '+i, babData[i]);
+            selectedData = type === 'ref' ? referensiData[i] : babData[i];
+            currentLabel = (type === 'ref' ? 'Ref Bab ' : 'Bab ') + i;
+            showModeMenu();
         };
         grid.appendChild(b);
     }
   }
 
-  function showBagian(n) {
-    let start = n === 1 ? 1 : 26;
-    let end = n === 1 ? 25 : 50;
-    prevView = 'minna';
-    showGridMenu("Minna No Nihongo", "bagian_"+n, start, end);
+  function showBagian(n) { showGridMenu("Minna No Nihongo", 'bagian_'+n, n === 1 ? 1 : 26, n === 1 ? 25 : 50); }
+  function showRefMenu() { showGridMenu("Kosakata Referensi", "ref", 1, 50); }
+
+  function showModeMenu() {
+    hideAll();
+    document.getElementById('modeMenu').style.display = 'flex';
+    document.getElementById('modeInfo').innerText = currentLabel;
+    document.getElementById('backBtn').style.display = 'block';
+    activeView = 'mode';
   }
 
-  function showRefMenu() {
-    prevView = 'minna';
-    showGridMenu("Kosakata Referensi", "ref", 1, 50);
+  function setQuizMode(mode) {
+    quizMode = mode;
+    startQuiz(currentLabel, selectedData);
   }
 
   function startQuiz(label, data) {
@@ -157,19 +169,19 @@
   }
 
   function startIrodoriKanji() {
-    prevView = 'irodori';
-    startQuiz("Kanji Irodori", irodoriKanjiData);
+    selectedData = irodoriKanjiData;
+    currentLabel = "Kanji Irodori";
+    showModeMenu();
   }
 
   function nextChunk() {
     currentQuestions = masterPool.splice(0, 10);
-    currentIndex = 0;
-    correctCount = 0;
-    combo = 0;
+    currentIndex = 0; correctCount = 0; combo = 0;
     hideAll();
     document.getElementById('wordBox').style.display = 'flex'; 
     document.getElementById('options').style.display = 'flex'; 
     document.getElementById('comboSection').style.display = 'block';
+    document.getElementById('backBtn').style.display = 'block';
     activeView = 'quiz';
     renderQuestion();
   }
@@ -177,25 +189,41 @@
   function renderQuestion() {
     if(currentIndex >= currentQuestions.length) { showResult(); return; }
     const q = currentQuestions[currentIndex];
-    document.getElementById('quizInfo').innerText = currentLabel;
+    document.getElementById('quizInfo').innerText = currentLabel + (quizMode === 'jp-id' ? " (JP-ID)" : " (ID-JP)");
     document.getElementById('instruksi').innerText = q.instruksi || "Pilih jawaban yang benar";
-    document.getElementById('kanji').innerText = q.kanji || "";
-    document.getElementById('kana').innerText = q.kana || "";
     
     const optBox = document.getElementById('options'); 
     optBox.innerHTML = '';
+    let correctAns = "";
+    let choices = [];
+
+    if (quizMode === 'jp-id') {
+        document.getElementById('kanji').innerText = q.kanji || "";
+        document.getElementById('kana').innerText = q.kana || "";
+        correctAns = q.correct;
+        choices = [...q.answers]; 
+    } else {
+        document.getElementById('kanji').innerText = q.kanji || ""; 
+        document.getElementById('kana').innerText = q.correct; 
+        correctAns = q.kana;
+        // Ambil Hiragana (kana) dari database bab secara acak
+        choices.push(q.kana);
+        let otherPool = selectedData.filter(item => item.kana !== q.kana);
+        let randomChoices = otherPool.sort(() => Math.random() - 0.5).slice(0, 3);
+        randomChoices.forEach(item => choices.push(item.kana));
+    }
     
-    [...q.answers].sort(()=>Math.random()-0.5).forEach(txt => {
+    [...choices].sort(()=>Math.random()-0.5).forEach(txt => {
         let b = document.createElement('button'); 
         b.className = 'optBtn'; 
         b.innerText = txt;
         b.onclick = () => {
-            if(txt === q.correct) { 
+            if(txt === correctAns) { 
                 b.classList.add('correct'); 
                 correctCount++; combo++; 
             } else { 
                 b.classList.add('wrong'); combo = 0;
-                Array.from(optBox.children).forEach(btn => { if(btn.innerText === q.correct) btn.classList.add('correct'); });
+                Array.from(optBox.children).forEach(btn => { if(btn.innerText === correctAns) btn.classList.add('correct'); });
             }
             setTimeout(() => { currentIndex++; renderQuestion(); }, 700);
         };
@@ -210,34 +238,27 @@
     let p = Math.round((correctCount/currentQuestions.length)*100);
     document.getElementById('finalScore').innerText = p + "%";
     document.getElementById('finalDetail').innerText = `${currentLabel}\nSisa soal: ${masterPool.length}`;
-    
+    activeView = 'result';
     const btnLanjut = document.getElementById('nextChunkBtn');
-    if (masterPool.length > 0) {
-        btnLanjut.style.display = 'block';
-        btnLanjut.onclick = nextChunk;
-    } else {
-        btnLanjut.style.display = 'none';
-    }
+    if (masterPool.length > 0) { btnLanjut.style.display = 'block'; btnLanjut.onclick = nextChunk; }
+    else { btnLanjut.style.display = 'none'; }
   }
 
   function goBack() {
-    if (activeView === 'quiz' || activeView === 'result') {
+    if (activeView === 'quiz' || activeView === 'result') showModeMenu();
+    else if (activeView === 'mode') {
         if(currentLabel.includes("Ref")) showRefMenu();
         else if(currentLabel.includes("Kanji")) showIrodoriMenu();
-        else showMinnaMenu();
-    } else if (activeView.startsWith('bagian') || activeView === 'ref') {
-        showMinnaMenu();
-    } else if (activeView === 'minna' || activeView === 'irodori') {
-        showMainMenu();
-    } else {
-        showMainMenu();
-    }
+        else {
+            let num = parseInt(currentLabel.replace("Bab ",""));
+            showBagian(num <= 25 ? 1 : 2);
+        }
+    } else if (activeView.startsWith('bagian') || activeView === 'ref') showMinnaMenu();
+    else if (activeView === 'minna' || activeView === 'irodori') showMainMenu();
+    else showMainMenu();
   }
 
   window.onload = showMainMenu;
 </script>
 </body>
 </html>
-
-
-
