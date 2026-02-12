@@ -203,7 +203,6 @@
     renderQuestion();
   }
 
-  // Deteksi Enter untuk input
   document.getElementById('userAnswer').addEventListener('keypress', function (e) {
       if (e.key === 'Enter') checkInputAnswer();
   });
@@ -231,7 +230,7 @@
         currentAnswer = q.correct;
         choices = [...q.answers]; 
     } else {
-        document.getElementById('kanji').innerText = q.kanji || ""; 
+        document.getElementById('kanji').innerText = ""; 
         document.getElementById('kana').innerText = q.correct; 
         currentAnswer = q.kana;
         choices.push(q.kana);
@@ -240,7 +239,6 @@
         randomChoices.forEach(item => choices.push(item.kana));
     }
 
-    // RANDOM MODE: Tentukan apakah ketik atau pilihan ganda
     const isTypingMode = Math.random() > 0.5;
 
     if (isTypingMode) {
@@ -264,18 +262,34 @@
     document.getElementById('flowerCount').innerText = combo;
   }
 
+  // --- PERBAIKAN UTAMA PADA PENGECEKAN KETIKAN ---
   function checkInputAnswer() {
       const q = currentQuestions[currentIndex];
-      const userVal = document.getElementById('userAnswer').value.trim();
+      // Ambil input user, hilangkan spasi depan-belakang, ubah jadi kecil
+      const userVal = document.getElementById('userAnswer').value.trim().toLowerCase();
       const inputField = document.getElementById('userAnswer');
       const msg = document.getElementById('wrongMessage');
       
       let isCorrect = false;
+
       if (quizMode === 'jp-id') {
-          isCorrect = userVal.toLowerCase() === q.correct.toLowerCase();
+          // Ambil jawaban benar dari database, bersihkan spasi paling ujung secara keseluruhan
+          let dbAnswer = q.correct.trim().toLowerCase();
+          
+          // Pecah jawaban berdasarkan koma (antisipasi jika jawaban ada dua kata/lebih)
+          // Contoh: "melihat, memeriksa " -> ["melihat", "memeriksa"]
+          let correctOptions = dbAnswer.split(',').map(item => item.trim());
+
+          // Cek apakah input user cocok dengan salah satu kata atau kalimat lengkap
+          isCorrect = correctOptions.includes(userVal) || userVal === dbAnswer;
+
       } else {
-          // Benar jika sama dengan Kanji atau Kana
-          isCorrect = (userVal === q.kanji) || (userVal === q.kana);
+          // Mode ID-JP (Ketik Jepang)
+          // Bersihkan database kanji & kana dari spasi yang mungkin tak sengaja terinput di data_minna.js
+          let dbKanji = q.kanji ? q.kanji.trim() : "";
+          let dbKana = q.kana ? q.kana.trim() : "";
+          
+          isCorrect = (userVal === dbKanji) || (userVal === dbKana);
       }
       
       if(isCorrect) {
@@ -295,6 +309,7 @@
           }, 2500); 
       }
   }
+  // --- END PERBAIKAN ---
 
   function processAnswer(isCorrect, element = null) {
       if(isCorrect) {
@@ -318,7 +333,6 @@
                   renderQuestion();
               }, 1500);
           } else {
-              // Jika dari mode ketik, langsung pindah (karena delay sudah ada di checkInputAnswer)
               currentIndex++;
               renderQuestion();
           }
