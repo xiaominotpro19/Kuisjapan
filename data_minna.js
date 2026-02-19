@@ -1431,16 +1431,38 @@ const babData = {
   { kanji: "赤", kana: "あか", answers: ["merah", "biru", "hijau", "kuning"], correct: "merah" },
   { kanji: "青", kana: "あお", answers: ["biru", "merah", "hitam", "putih"], correct: "biru" },
   { kanji: "紺", kana: "こん", answers: ["biru tua", "biru muda", "ungu", "hijau"], correct: "biru tua" },
-  { kanji: "茶色", kana: "ちゃいろ", answers: ["coklat", "hitam", "merah", "kuning"], correct: "coklat" },
-  { kanji: "", kana: "しょうゆ", answers: ["kecap inggris", "garam", "kecap asin", "kecap manis"], correct: "kecap asin" },
-  { kanji: "", kana: "ソース", answers: ["kecap inggris", "kecap asin", "kecap manis", "kecap saos"], correct: "kecap inggris" },
-  { kanji: "お客", kana: "おきゃく", answers: ["tamu", "kita", "teman", "anda"], correct: "tamu" },
-  { kanji: "材料", kana: "ざいりょう", answers: ["alat", "bahan", "bumbu", "panci"], correct: "bahan" },
-  { kanji: "調味料", kana: "ちょうみりょう", answers: ["minyak", "bumbu", "sayur", "daging"], correct: "bumbu" },
-  { kanji: "鍋", kana: "なべ", answers: ["gelas", "piring", "panci", "sendok"], correct: "panci" },
-  { kanji: "火", kana: "ひ", answers: ["air", "tanah", "api", "udara"], correct: "api" },
-  { kanji: "煮ます", kana: "にます", answers: ["merebus", "menggoreng", "memotong", "membakar"], correct: "merebus" },
-  { kanji: "たちます", kana: "たちます", answers: ["lewat", "datang", "pergi", "berhenti"], correct: "lewat" }
+  { kanji: "紺", kana: "こん", answers: ["biru tua", "merah muda", "hijau", "abu-abu"], correct: "biru tua" },
+  { kanji: "黄色", kana: "きいろ", answers: ["kuning", "coklat", "hijau", "putih"], correct: "kuning" },
+  { kanji: "茶色", kana: "ちゃいろ", answers: ["kuning", "coklat", "hitam", "merah"], correct: "coklat" },
+  { kanji: "", kana: "しょうゆ", answers: ["kecap asin", "kecap manis", "saus tiram", "garam"], correct: "kecap asin" },
+  { kanji: "", kana: "ソース", answers: ["kecap asin", "kecap inggris", "minyak", "cuka"], correct: "kecap inggris" },
+  { kanji: "お客[さん]", kana: "おきゃく[さん]", answers: ["tamu", "pelayan", "koki", "guru"], correct: "tamu" },
+  { kanji: "", kana: "～か～", answers: ["~ dan ~", "~ atau ~", "~ tapi ~", "~ setelah ~"], correct: "~ atau ~" },
+  { kanji: "", kana: "ゆうべ", answers: ["tadi malam", "tadi pagi", "tadi siang", "besok"], correct: "tadi malam" },
+  { kanji: "", kana: "さっき", answers: ["tadi", "nanti", "kemarin", "besok"], correct: "tadi" },
+  { kanji: "茶道", kana: "さどう", answers: ["upacara teh", "seni lukis", "bela diri", "memasak"], correct: "upacara teh" },
+  { kanji: "お茶をたてます", kana: "おちゃをたてます", answers: ["meminum teh", "membuat teh", "menjual teh", "menanam teh"], correct: "membuat teh" },
+  { kanji: "先に", kana: "さきに", answers: ["duluan", "belakangan", "akhirnya", "bersama"], correct: "duluan" },
+  { kanji: "載せます", kana: "のせます", answers: ["memuatkan", "mengambil", "membuang", "menaruh"], correct: "memuatkan" },
+  { kanji: "", kana: "これでいいですか", answers: ["boleh begini?", "apa itu?", "siapa itu?", "di mana ini?"], correct: "boleh begini?" },
+  { kanji: "", kana: "いかがですか", answers: ["bagaimana?", "kapan?", "siapa?", "berapa?"], correct: "bagaimana?" },
+  { kanji: "苦い", kana: "にがい", answers: ["pahit", "manis", "pedas", "asin"], correct: "pahit" },
+  { kanji: "親子どんぶり", kana: "おやこどんぶり", answers: ["oyakodonburi", "nasi goreng", "mie kuah", "ikan bakar"], correct: "oyakodonburi" },
+  { kanji: "材料", kana: "ざいりょう", answers: ["bahan", "alat", "cara", "hasil"], correct: "bahan" },
+  { kanji: "ー分", kana: "ーぶん", answers: ["untuk -", "- menit", "- jam", "- hari"], correct: "untuk -" },
+  { kanji: "ーグラム", kana: "ーグラム", answers: ["gram", "kilogram", "meter", "liter"], correct: "gram" },
+  { kanji: "ー個", kana: "ーこ", answers: ["buah", "ekor", "orang", "setel"], correct: "buah" },
+  { kanji: "たまねぎ", kana: "たまねぎ", answers: ["bawang bombai", "bawang putih", "kentang", "wortel"], correct: "bawang bombai" },
+  { kanji: "4分の1", kana: "よんぶんのいち", answers: ["seperempat", "setengah", "sepertiga", "seperlima"], correct: "seperempat" },
+  { kanji: "調味料", kana: "ちょうみりょう", answers: ["bumbu", "sayuran", "daging", "buah"], correct: "bumbu" },
+  { kanji: "適当な大きさに", kana: "てきとうなおおきさに", answers: ["ukuran sedang", "ukuran besar", "ukuran kecil", "sangat luas"], correct: "ukuran sedang" },
+  { kanji: "なべ", kana: "なべ", answers: ["panci", "wajan", "piring", "gelas"], correct: "panci" },
+  { kanji: "火", kana: "ひ", answers: ["api", "air", "tanah", "angin"], correct: "api" },
+  { kanji: "火にかけます", kana: "ひにかけます", answers: ["memasak", "mematikan api", "membakar", "mencuci"], correct: "memasak" },
+  { kanji: "煮ます", kana: "にます", answers: ["merebus", "menggoreng", "memanggang", "mengukus"], correct: "merebus" },
+  { kanji: "煮えます", kana: "にえます", answers: ["telah matang", "sedang mendidih", "masih mentah", "hangat"], correct: "telah matang" },
+  { kanji: "どんぶり", kana: "どんぶり", answers: ["mangkuk", "piring besar", "sendok", "sumpit"], correct: "mangkuk" },
+  { kanji: "たちます", kana: "たちます", answers: ["lewat/berlalu", "datang/tiba", "pergi/keluar", "kembali/pulang"], correct: "lewat/berlalu" }
 ],
 35: [
   { kanji: "咲きます", kana: "さきます", answers: ["[bunga] mekar", "berubah", "bingung", "sembuh"], correct: "[bunga] mekar" },
@@ -2128,6 +2150,7 @@ const babData = {
   { kanji: "ミュンヘン", kana: "ミュンヘン", answers: ["München (Jerman)", "Paris (Prancis)", "London (Inggris)", "Roma (Italia)"], correct: "München (Jerman)" }
 ]
 };
+
 
 
 
